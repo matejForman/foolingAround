@@ -560,7 +560,7 @@ function onEnd(){ const S=G.S,L=G.L;
     const n=G.stars(); if(!best[L.id]||best[L.id]<n){best[L.id]=n; try{localStorage.setItem('foamFun.best',JSON.stringify(best))}catch(e){} buildCases();}
     log(''); log('End','g'); log(''); flushLog();
     const last=li===LEVELS.length-1;
-    const head=last?(NAME?'Good work!'):'End';
+    const head=last?'Good work!':'End';
     const sub=last?G.count+' of '+G.need+' leaves down at t = '+(G.step/100).toFixed(2)+' s, using '+Math.round(G.breathUsed)+' units of wind.':'Converged at t = '+(G.step/100).toFixed(2)+' s of '+(L.T/100).toFixed(0)+' s.';
     showOver('<h2>'+head+'</h2><div class="stars">'+starStr(n)+'</div><p>'+sub+'</p>'+(last?'<button class="btn" data-a="readme">How the flow is calculated</button><button class="btn alt" data-a="retry">Play again</button>':'<button class="btn" data-a="next">Next case</button><button class="btn alt" data-a="retry">Play again</button>'));
   } else {
