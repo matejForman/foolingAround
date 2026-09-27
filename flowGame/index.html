@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="A tiny CFD game: play with the terms of the momentum equation and watch the flow react.">
-<meta property="og:title" content="foamFun — a birthday case">
-<meta property="og:description" content="Play with the terms of the momentum equation: pressure drop, viscosity, convection, buoyancy and your own body force.">
+<meta property="og:title" content="foamFun — a fun case">
+<meta property="og:description" content="Play with the terms of the momentum equation: pressure drop, viscosity, convection, buoyancy and your own body force. There is no OpenFOAM involved, just a simple solution. Read the explanation card. Created by AI.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://matejForman.github.io/foolingAround/flowGame/og.png">
 <meta property="og:url" content="https://matejForman.github.io/foolingAround/flowGame/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍂</text></svg>">
-<title>foamFun — a birthday case</title>
+<title>foamFun — a case to have some fluid fun</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -118,7 +118,7 @@ footer code{font-family:var(--mono);font-size:12px}
 <body>
 <div class="wrap">
 <header>
-  <h1><b>foamFun</b> — a birthday case</h1>
+  <h1><b>foamFun</b> — a case for fun</h1>
   <nav class="cases" id="cases" aria-label="Cases"></nav>
 </header>
 
@@ -174,7 +174,7 @@ footer code{font-family:var(--mono);font-size:12px}
 </div>
 <article id="readme" class="readme" hidden>
   <h2>How the flow is calculated</h2>
-  <p class="lead">No OpenFOAM inside, sorry. Everything runs in your browser in about 300 lines of JavaScript. The core is Jos Stam’s <em>Stable Fluids</em> (1999), the classic real-time method, with one upgrade to the advection.</p>
+  <p class="lead">No OpenFOAM inside, sorry. It's just a fun toy of an OpenFOAM user. Everything runs in your browser in about 300 lines of JavaScript. The core is Jos Stam’s <em>Stable Fluids</em> (1999), the classic real-time method, with one upgrade to the advection.</p>
 
   <h3>Equations and mesh</h3>
   <p>The solver integrates the 2D incompressible Navier–Stokes equations with a Boussinesq buoyancy term:</p>
@@ -479,9 +479,9 @@ function load(i,fresh){ const keep=!fresh&&G&&G.li===i; const prev=keep?{dp:$('d
   logLines=[]; t0=performance.now();
   log('/*---------------------------------------------------------------------------*\\');
   log('  =========                 |');
-  log('  \\\\      /  F ield         | foamFun: the birthday edition');
+  log('  \\\\      /  F ield         | foamFun: the not so much OpenFOAM edition');
   log('   \\\\    /   O peration     |');
-  log('    \\\\  /    A nd           | www.openfoam.com');
+  log('    \\\\  /    A nd           | www.havefoamfun');
   log('     \\\\/     M anipulation  |');
   log('\\*---------------------------------------------------------------------------*/');
   log('Case   : '+G.L.path);
@@ -560,7 +560,7 @@ function onEnd(){ const S=G.S,L=G.L;
     const n=G.stars(); if(!best[L.id]||best[L.id]<n){best[L.id]=n; try{localStorage.setItem('foamFun.best',JSON.stringify(best))}catch(e){} buildCases();}
     log(''); log('End','g'); log(''); flushLog();
     const last=li===LEVELS.length-1;
-    const head=last?(NAME?'Happy birthday, '+esc(NAME)+'!':'Wish granted. Happy birthday!'):'End';
+    const head=last?(NAME?'Good work!'):'End';
     const sub=last?G.count+' of '+G.need+' leaves down at t = '+(G.step/100).toFixed(2)+' s, using '+Math.round(G.breathUsed)+' units of wind.':'Converged at t = '+(G.step/100).toFixed(2)+' s of '+(L.T/100).toFixed(0)+' s.';
     showOver('<h2>'+head+'</h2><div class="stars">'+starStr(n)+'</div><p>'+sub+'</p>'+(last?'<button class="btn" data-a="readme">How the flow is calculated</button><button class="btn alt" data-a="retry">Play again</button>':'<button class="btn" data-a="next">Next case</button><button class="btn alt" data-a="retry">Play again</button>'));
   } else {
